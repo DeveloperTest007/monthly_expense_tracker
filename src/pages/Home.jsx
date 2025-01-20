@@ -7,7 +7,7 @@ import { formatDate, groupTransactionsByDate } from '../utils/dateUtils';
 import { useAuth } from '../hooks/useAuth';
 import Spinner from '../components/Spinner';
 import { useTransactions } from '../hooks/useTransactions';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 // Constants for categories
 const incomeCategories = [
@@ -218,20 +218,30 @@ const Home = () => {
           <h1 className="text-3xl sm:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
             Monthly Expense Tracker
           </h1>
-          {!user && (
-            <button
-              onClick={handleSignIn}
-              disabled={authLoading}
-              className="px-4 py-2 bg-white rounded-lg shadow-md text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {authLoading ? 'Signing in...' : 'Sign in with Google'}
-            </button>
-          )}
-          {authError && (
-            <div className="mt-2 text-sm text-red-500">
-              {authError}
-            </div>
-          )}
+          <div className="flex gap-4">
+            {user && (
+              <Link
+                to="/add-transaction"
+                className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md text-sm font-medium hover:bg-blue-600 transition-colors"
+              >
+                Add Transaction
+              </Link>
+            )}
+            {!user && (
+              <button
+                onClick={handleSignIn}
+                disabled={authLoading}
+                className="px-4 py-2 bg-white rounded-lg shadow-md text-sm font-medium text-gray-700 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {authLoading ? 'Signing in...' : 'Sign in with Google'}
+              </button>
+            )}
+            {authError && (
+              <div className="mt-2 text-sm text-red-500">
+                {authError}
+              </div>
+            )}
+          </div>
         </div>
 
         {!user ? (

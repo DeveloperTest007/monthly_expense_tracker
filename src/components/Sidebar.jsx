@@ -29,7 +29,7 @@ const Sidebar = () => {
 
   const navigation = [
     { name: 'Dashboard', href: '/', icon: HomeIcon },
-    { name: 'Expenses', href: '/expenses', icon: CreditCardIcon },
+    { name: 'Income vs Expenses', href: '/add-transaction', icon: CreditCardIcon },
     { name: 'Reports', href: '/reports', icon: ChartBarIcon },
     { name: 'Settings', href: '/settings', icon: CogIcon },
   ];
@@ -96,9 +96,8 @@ const Sidebar = () => {
                     : 'text-slate-400 hover:bg-white/5 hover:text-white'
                   }`}
               >
-                <item.icon className={`w-5 h-5 transition-transform duration-200 group-hover:scale-110 ${
-                  isActive(item.href) ? 'text-blue-400' : ''
-                }`} />
+                <item.icon className={`w-5 h-5 transition-transform duration-200 group-hover:scale-110 ${isActive(item.href) ? 'text-blue-400' : ''
+                  }`} />
                 <span className="text-sm font-medium">{item.name}</span>
                 {isActive(item.href) && (
                   <div className="ml-auto w-1.5 h-1.5 rounded-full bg-blue-400"></div>

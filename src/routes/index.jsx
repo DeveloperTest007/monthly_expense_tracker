@@ -6,6 +6,7 @@ import Login from '../pages/Login';
 import SignUp from '../pages/SignUp';
 import { ProtectedRoute } from '../components/auth/ProtectedRoute';
 import Reports from '../pages/Reports';
+import IncomeAndExpense from '../pages/IncomeAndExpense';
 
 export const router = createBrowserRouter([
   {
@@ -36,6 +37,14 @@ export const router = createBrowserRouter([
       {
         path: 'reports',
         element: <Reports />,
+      },
+      {
+        path: 'add-transaction',
+        element: (
+          <ProtectedRoute>
+            <IncomeAndExpense />
+          </ProtectedRoute>
+        ),
       },
       {
         path: '*',
